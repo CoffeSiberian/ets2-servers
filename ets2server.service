@@ -1,5 +1,5 @@
 [Unit]
-Description=LinuxGSM - Euro Truck Simulator 2 Server (ets2server gestionado por CoffeSiberian)
+Description=ets2servergame
 # Se asegura de que la red esté lista antes de intentar iniciar
 After=network-online.target
 Wants=network-online.target
