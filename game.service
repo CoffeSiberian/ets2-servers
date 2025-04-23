@@ -1,0 +1,25 @@
+[Unit]
+Description=LinuxGSM - Euro Truck Simulator 2 Server (ets2server gestionado por CoffeSiberian)
+# Se asegura de que la red esté lista antes de intentar iniciar
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+User=CoffeSiberian
+Group=CoffeSiberian
+
+WorkingDirectory=/home/CoffeSiberian/ets2
+
+ExecStart=/home/CoffeSiberian/ets2server start
+ExecStop=/home/CoffeSiberian/ets2server stop
+ExecReload=/home/CoffeSiberian/ets2server restart
+
+Restart=on-failure
+RestartSec=5s
+
+TimeoutStartSec=300s
+TimeoutStopSec=300s
+
+[Install]
+WantedBy=multi-user.target
