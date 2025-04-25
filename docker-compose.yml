@@ -1,0 +1,13 @@
+services:
+    ets2server_service:
+        container_name: ets2server
+        image: ets2_image
+        volumes:
+            - /root/game/ets2:/home/ets2server/datagame
+        dns:
+            - 1.1.1.1
+            - 1.0.0.1
+        ports:
+            - "27015:27015/udp"
+            - "27016:27016/udp"
+        command: tail -f /dev/null
