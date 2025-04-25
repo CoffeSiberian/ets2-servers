@@ -3,7 +3,7 @@ services:
         container_name: ets2server
         image: ets2_image
         volumes:
-            - /root/game/ets2:/home/ets2server/datagame
+            - /home/root/game_data:/home/ets2server/datagame
         dns:
             - 1.1.1.1
             - 1.0.0.1
