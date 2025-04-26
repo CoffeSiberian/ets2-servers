@@ -30,6 +30,7 @@ RUN apt-get update && \
         lib32gcc-s1 \
         lib32stdc++6 \
         libsdl2-2.0-0:i386 \
+        libx11-6 \
         netcat-openbsd \
         pigz \
         python3 \
@@ -51,3 +52,9 @@ USER ets2server
 WORKDIR /home/ets2server
 
 RUN ./ets2server ai
+
+USER root
+COPY ets2server.cfg ./lgsm/config-lgsm/ets2server
+RUN chown -R ets2server:ets2server ./lgsm/
+
+USER ets2server
