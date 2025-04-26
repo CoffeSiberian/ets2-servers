@@ -3,7 +3,7 @@ services:
         container_name: ets2server
         image: ets2server
         volumes:
-            - "/home/coffe/game_data/Euro Truck Simulator 2:/home/ets2server/.local/share/Euro Truck Simulator 2"
+            - "ets2server_1:/home/ets2server/.local/share/Euro Truck Simulator 2"
         dns:
             - 1.1.1.1
             - 1.0.0.1
@@ -12,3 +12,6 @@ services:
             - "27016:27016/udp"
         command: tail -f /dev/null
         restart: unless-stopped
+
+volumes:
+    ets2server_1:

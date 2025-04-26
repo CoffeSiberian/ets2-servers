@@ -44,13 +44,23 @@ RUN apt-get update && \
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN adduser --disabled-password --gecos "" ets2server
-COPY ets2server /home/ets2server/ets2server
-RUN chown ets2server:ets2server /home/ets2server/ets2server
-RUN chmod +x /home/ets2server/ets2server
-
-USER ets2server
 WORKDIR /home/ets2server
 
+COPY config_ds.cfg config_ds.cfg
+COPY server_config.sii server_config.sii
+COPY entrypoint.sh entrypoint.sh
+COPY ets2server ets2server
+
+RUN chmod +x entrypoint.sh
+RUN chmod +x ets2server
+
+RUN chown -R ets2server:ets2server config_ds.cfg
+RUN chown -R ets2server:ets2server server_config.sii
+RUN chown -R ets2server:ets2server entrypoint.sh
+RUN chown -R ets2server:ets2server ets2server
+
+USER ets2server
 RUN ./ets2server ai
 
 RUN rm -rf "./local/Euro Truck Simulator 2"
+ENTRYPOINT ["/home/ets2server/entrypoint.sh"]
