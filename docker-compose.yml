@@ -1,7 +1,7 @@
 services:
     ets2server_service:
         container_name: ets2server
-        image: ets2_image
+        image: ets2server
         volumes:
             - "/home/coffe/game_data/Euro Truck Simulator 2:/home/ets2server/.local/share/Euro Truck Simulator 2"
         dns:
