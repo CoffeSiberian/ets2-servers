@@ -3,7 +3,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends ubuntu-server
-RUN apt-get install -y --no-install-recommends ubuntu-standard
 RUN apt-get install -y --no-install-recommends libatomic1
 RUN apt-get install -y --no-install-recommends sudo
 RUN apt-get install -y --no-install-recommends nano
