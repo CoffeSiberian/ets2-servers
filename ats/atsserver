@@ -25,8 +25,8 @@ if [ -f ".dev-debug" ]; then
 fi
 
 version="v25.1.5"
-shortname="ets2"
-gameservername="ets2server"
+shortname="ats"
+gameservername="atsserver"
 commandname="CORE"
 rootdir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 selfname=$(basename "$(readlink -f "${BASH_SOURCE[0]}")")
