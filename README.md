@@ -15,3 +15,5 @@ docker compose up -d
 ```bash
 docker exec -it <ID_CONTENEDOR> bash
 ```
+
+Los archivos de configuracion de los servidores se podran encontrar en: `/var/lib/docker/volumes`
