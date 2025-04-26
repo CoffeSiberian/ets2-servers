@@ -53,8 +53,4 @@ WORKDIR /home/ets2server
 
 RUN ./ets2server ai
 
-USER root
-COPY ets2server.cfg ./lgsm/config-lgsm/ets2server
-RUN chown -R ets2server:ets2server ./lgsm/
-
-USER ets2server
+RUN rm -rf "./local/Euro Truck Simulator 2"
