@@ -1,0 +1,44 @@
+SiiNunit
+{
+server_config : server {
+ lobby_name: "Los Andes VTC | SERVER PRIVADO | SiberianCoffe"
+ description: "discord.andesvtc.com"
+ welcome_message: "Bienvenido a Los Andes VTC"
+ password: ""
+ max_players: 128
+ max_vehicles_total: 60
+ max_ai_vehicles_player: 25
+ max_ai_vehicles_player_spawn: 25
+ connection_virtual_port: 100
+ query_virtual_port: 101
+ connection_dedicated_port: 27015
+ query_dedicated_port: 27016
+ server_logon_token: "TOKEN"
+ player_damage: false
+ traffic: true
+ hide_in_company: false
+ hide_colliding: true
+ force_speed_limiter: false
+ mods_optioning: false
+ timezones: 0
+ service_no_collision: true
+ in_menu_ghosting: true
+ name_tags: true
+ friends_only: false
+ show_server: true
+ moderator_list: 12
+ moderator_list[0]: 76561198450698846
+ moderator_list[1]: 76561198839888806
+ moderator_list[2]: 76561199129707587
+ moderator_list[3]: 76561199549666539
+ moderator_list[4]: 76561198270946367
+ moderator_list[5]: 76561199144848377
+ moderator_list[6]: 76561199198608173
+ moderator_list[7]: 76561199206338021
+ moderator_list[8]: 76561198290666145
+ moderator_list[9]: 76561198080650723
+ moderator_list[10]: 76561199418604640
+ moderator_list[11]: 76561199157993508
+}
+
+}

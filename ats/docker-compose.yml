@@ -1,0 +1,17 @@
+services:
+    atsserver_service:
+        container_name: atsserver
+        image: atsserver
+        volumes:
+            - "atsserver_1:/home/atsserver/.local/share/American Truck Simulator"
+        dns:
+            - 1.1.1.1
+            - 1.0.0.1
+        ports:
+            - "27015:27015/udp"
+            - "27016:27016/udp"
+        command: tail -f /dev/null
+        restart: unless-stopped
+
+volumes:
+    atsserver_1:
