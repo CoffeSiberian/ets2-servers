@@ -17,7 +17,7 @@ echo "Initialization complete."
 
 # Keep the container running (replace tail -f /dev/null in docker-compose if needed)
 # Add the command to start your actual server here, for example:
-# ./ets2server start
+./ets2server start
 
 # If you want to keep the container running without starting the server immediately,
 # use tail -f /dev/null or similar.
