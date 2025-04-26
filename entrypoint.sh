@@ -1,24 +1,28 @@
 #!/bin/bash
 
 INIT_FILE=".initialized"
-TARGET_DIR="/home/ets2server/.local/share/Euro Truck Simulator 2" # Use the volume mount path
+TARGET_DIR="/home/ets2server/.local/share/Euro Truck Simulator 2"
 
-mkdir -p "$TARGET_DIR"
+service cron start
 
 if [ ! -f "$INIT_FILE" ]; then
-    # Copia los archivos solo la primera vez
-    cp /home/ets2server/server_config.sii "$TARGET_DIR/server_config.sii"
-    cp /home/ets2server/config_ds.cfg "$TARGET_DIR/config_ds.cfg"
-    touch "$INIT_FILE"
+    # Create directory as ets2server user
+    sudo -u ets2server mkdir -p "$TARGET_DIR"
+    # Copy files as ets2server user
+    sudo -u ets2server cp /home/ets2server/server_config.sii "$TARGET_DIR/server_config.sii"
+    sudo -u ets2server cp /home/ets2server/config_ds.cfg "$TARGET_DIR/config_ds.cfg"
+    # Create init file as ets2server user
+    sudo -u ets2server touch "$INIT_FILE"
     echo "Files copied for the first time."
 fi
 
 echo "Initialization complete."
 
-# Keep the container running (replace tail -f /dev/null in docker-compose if needed)
-# Add the command to start your actual server here, for example:
-./ets2server start
+# Start the server as ets2server user
+# Ensure the ets2server binary is executable by the ets2server user and located correctly
+# If ets2server is not in PATH for ets2server user, specify the full path
+# Example: sudo -u ets2server /path/to/ets2server start
+sudo -u ets2server ./ets2server start
 
-# If you want to keep the container running without starting the server immediately,
-# use tail -f /dev/null or similar.
+# Keep the container running (this part runs as root, which is fine)
 tail -f /dev/null

@@ -56,11 +56,16 @@ RUN chmod +x ets2server
 
 RUN chown -R ets2server:ets2server config_ds.cfg
 RUN chown -R ets2server:ets2server server_config.sii
-RUN chown -R ets2server:ets2server entrypoint.sh
 RUN chown -R ets2server:ets2server ets2server
+
+RUN echo '*/5 * * * * ets2server /home/ets2server/ets2server monitor > /dev/null 2>&1' > /etc/cron.d/ets2-monitor
+RUN chmod 0644 /etc/cron.d/ets2-monitor
+RUN chown root:root /etc/cron.d/ets2-monitor
+RUN echo "" >> /etc/cron.d/ets2-monitor
 
 USER ets2server
 RUN ./ets2server ai
 
+USER root
 RUN rm -rf "./local/Euro Truck Simulator 2"
 ENTRYPOINT ["/home/ets2server/entrypoint.sh"]
