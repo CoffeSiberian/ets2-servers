@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INIT_FILE=".initialized"
-TARGET_DIR="/home/atsserver/.local/share/Euro Truck Simulator 2"
+TARGET_DIR="/home/atsserver/.local/share/American Truck Simulator"
 
 service cron start
 

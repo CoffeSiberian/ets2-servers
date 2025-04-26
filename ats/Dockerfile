@@ -57,10 +57,10 @@ RUN chown -R atsserver:atsserver config_ds.cfg
 RUN chown -R atsserver:atsserver server_config.sii
 RUN chown -R atsserver:atsserver atsserver
 
-RUN echo '*/5 * * * * atsserver /home/atsserver/atsserver monitor > /dev/null 2>&1' > /etc/cron.d/ets2-monitor
-RUN chmod 0644 /etc/cron.d/ets2-monitor
-RUN chown root:root /etc/cron.d/ets2-monitor
-RUN echo "" >> /etc/cron.d/ets2-monitor
+RUN echo '*/5 * * * * atsserver /home/atsserver/atsserver monitor > /dev/null 2>&1' > /etc/cron.d/ats-monitor
+RUN chmod 0644 /etc/cron.d/ats-monitor
+RUN chown root:root /etc/cron.d/ats-monitor
+RUN echo "" >> /etc/cron.d/ats-monitor
 
 USER atsserver
 RUN ./atsserver ai
