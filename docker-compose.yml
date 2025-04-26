@@ -11,3 +11,4 @@ services:
             - "27015:27015/udp"
             - "27016:27016/udp"
         command: tail -f /dev/null
+        restart: unless-stopped
