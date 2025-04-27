@@ -19,9 +19,6 @@ fi
 echo "Initialization complete."
 
 # Start the server as atsserver user
-# Ensure the atsserver binary is executable by the atsserver user and located correctly
-# If atsserver is not in PATH for atsserver user, specify the full path
-# Example: sudo -u atsserver /path/to/atsserver start
 sudo -u atsserver ./atsserver start
 
 # Keep the container running (this part runs as root, which is fine)

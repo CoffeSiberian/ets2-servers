@@ -11,12 +11,10 @@ RUN apt-get install -y --no-install-recommends adduser
 
 RUN apt-get update && \
     dpkg --add-architecture i386 && \
-    # Pre-acepta la licencia de SteamCMD
+    # Pre-accepts the SteamCMD license
     echo steam steam/license note '' | debconf-set-selections && \
     echo steam steam/question select "I AGREE" | debconf-set-selections && \
-    # Actualiza de nuevo para obtener las listas de paquetes i386
     apt-get update && \
-    # Instala los paquetes necesarios (sin sudo)
     apt-get install -y --no-install-recommends \
         bc \
         binutils \

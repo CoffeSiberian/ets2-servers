@@ -19,9 +19,6 @@ fi
 echo "Initialization complete."
 
 # Start the server as ets2server user
-# Ensure the ets2server binary is executable by the ets2server user and located correctly
-# If ets2server is not in PATH for ets2server user, specify the full path
-# Example: sudo -u ets2server /path/to/ets2server start
 sudo -u ets2server ./ets2server start
 
 # Keep the container running (this part runs as root, which is fine)

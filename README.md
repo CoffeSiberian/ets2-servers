@@ -1,19 +1,19 @@
-## Construir una imagen con:
+## Build an image with
 
 ```bash
 docker build -t ets2server .
 ```
 
-## Utilizar el compose para arrancar la maquina
+## Using the compose to start the machine
 
 ```bash
 docker compose up -d
 ```
 
-## Entrar con una consola interactiva
+## Enter with an interactive console
 
 ```bash
 docker exec -it <ID_CONTENEDOR> bash
 ```
 
-Los archivos de configuracion de los servidores se podran encontrar en: `/var/lib/docker/volumes`
+The server configuration files can be found in: `/var/lib/docker/volumes`.
