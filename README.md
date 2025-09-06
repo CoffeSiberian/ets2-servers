@@ -16,6 +16,33 @@ docker compose build --no-cache --pull && docker compose up -d && docker image p
 docker exec -it ID_CONT bash
 ```
 
+## Deploy more than one instance
+
+Build a new image for whichever you need (ATS or ETS2) so you can use it in a new container.
+
+```bash
+docker build -t my-server:1.0 .
+```
+
+And create your new `docker-compose.yml` with the following content to reuse the container:
+
+```yml
+services:
+    atsserver_service:
+        container_name: atsserver
+        image: my-server:1.0
+        volumes:
+            - "./data:/home/atsserver/.local/share/American Truck Simulator"
+            - "./log:/home/atsserver/log"
+        dns:
+            - 1.1.1.1
+            - 1.0.0.1
+        ports:
+            - "27015:27015/udp"
+            - "27016:27016/udp"
+        restart: unless-stopped
+```
+
 If you want to verify that your server is online, you can use the following tool to check: https://ismygameserver.online/
 
 ## Troubleshooting server visibility
