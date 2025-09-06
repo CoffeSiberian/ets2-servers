@@ -13,4 +13,6 @@ services:
         ports:
             - "27017:27015/udp"
             - "27018:27016/udp"
+            - "27017:27015/tcp"
+            - "27018:27016/tcp"
         restart: unless-stopped
