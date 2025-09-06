@@ -24,17 +24,8 @@ RUN dpkg --add-architecture i386 && \
 RUN adduser --disabled-password --gecos "" ets2server
 WORKDIR /home/ets2server
 
-COPY config_ds.cfg config_ds.cfg
-COPY server_config.sii server_config.sii
 COPY entrypoint.sh entrypoint.sh
-COPY ets2server ets2server
-
 RUN chmod +x entrypoint.sh
-RUN chmod +x ets2server
-
-RUN chown -R ets2server:ets2server config_ds.cfg
-RUN chown -R ets2server:ets2server server_config.sii
-RUN chown -R ets2server:ets2server ets2server
 
 RUN echo '*/5 * * * * ets2server /home/ets2server/ets2server monitor > /dev/null 2>&1' > /etc/cron.d/ets2-monitor
 RUN chmod 0644 /etc/cron.d/ets2-monitor
@@ -42,6 +33,8 @@ RUN chown root:root /etc/cron.d/ets2-monitor
 RUN echo "" >> /etc/cron.d/ets2-monitor
 
 USER ets2server
+RUN curl -Lo linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh ets2server
+RUN chmod +x ets2server
 RUN ./ets2server ai
 
 USER root

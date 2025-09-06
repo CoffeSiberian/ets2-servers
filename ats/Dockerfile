@@ -24,17 +24,8 @@ RUN dpkg --add-architecture i386 && \
 RUN adduser --disabled-password --gecos "" atsserver
 WORKDIR /home/atsserver
 
-COPY config_ds.cfg config_ds.cfg
-COPY server_config.sii server_config.sii
 COPY entrypoint.sh entrypoint.sh
-COPY atsserver atsserver
-
 RUN chmod +x entrypoint.sh
-RUN chmod +x atsserver
-
-RUN chown -R atsserver:atsserver config_ds.cfg
-RUN chown -R atsserver:atsserver server_config.sii
-RUN chown -R atsserver:atsserver atsserver
 
 RUN echo '*/5 * * * * atsserver /home/atsserver/atsserver monitor > /dev/null 2>&1' > /etc/cron.d/ats-monitor
 RUN chmod 0644 /etc/cron.d/ats-monitor
@@ -42,6 +33,8 @@ RUN chown root:root /etc/cron.d/ats-monitor
 RUN echo "" >> /etc/cron.d/ats-monitor
 
 USER atsserver
+RUN curl -Lo linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh atsserver
+RUN chmod +x atsserver
 RUN ./atsserver ai
 
 USER root
