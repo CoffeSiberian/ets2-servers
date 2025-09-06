@@ -1,17 +1,16 @@
 services:
     atsserver_service:
         container_name: atsserver
-        image: atsserver
+        build:
+            context: .
+            dockerfile: Dockerfile
         volumes:
-            - "atsserver_1:/home/atsserver/.local/share/American Truck Simulator"
+            - "./data:/home/atsserver/.local/share/American Truck Simulator"
+            - "./log:/home/atsserver/log"
         dns:
             - 1.1.1.1
             - 1.0.0.1
         ports:
-            - "27015:27015/udp"
-            - "27016:27016/udp"
-        command: tail -f /dev/null
+            - "27015:27015"
+            - "27016:27016"
         restart: unless-stopped
-
-volumes:
-    atsserver_1:

@@ -1,17 +1,16 @@
 services:
     ets2server_service:
         container_name: ets2server
-        image: ets2server
+        build:
+            context: .
+            dockerfile: Dockerfile
         volumes:
-            - "ets2server_1:/home/ets2server/.local/share/Euro Truck Simulator 2"
+            - "./data:/home/ets2server/.local/share/Euro Truck Simulator 2"
+            - "./log:/home/ets2server/log"
         dns:
             - 1.1.1.1
             - 1.0.0.1
         ports:
-            - "27015:27015/udp"
-            - "27016:27016/udp"
-        command: tail -f /dev/null
+            - "27015:27015"
+            - "27016:27016"
         restart: unless-stopped
-
-volumes:
-    ets2server_1:
